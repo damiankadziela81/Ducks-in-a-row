@@ -12,12 +12,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("Enter max width: ");
+        System.out.println("Enter max row width: ");
         Scanner scanner = new Scanner(System.in);
         maxRowWidth = scanner.nextInt();
 
         List<Duck> ducks = generateDucks();
-        System.out.println("\nHere's the duck list:");
+        System.out.println("\nHere's the current duck list:");
         ducks.forEach(System.out::println);
 
         List<Duck> bestDucks = selectBestDucks(ducks);
@@ -57,15 +57,12 @@ public class Main {
 
     static List<Duck> selectBestDucks(List<Duck> list) {
         int totalWidth=0;
-        int totalHeight=0;
         list.sort(new DuckRatioComparator());
         List<Duck> bestDucks = new ArrayList<>();
         for (Duck duck : list) {
-            totalHeight += duck.getHeight();
             totalWidth += duck.getWidth();
             if (totalWidth <= maxRowWidth) bestDucks.add(duck);
             else {
-                totalHeight -= duck.getHeight();
                 totalWidth -= duck.getWidth();
             }
         }

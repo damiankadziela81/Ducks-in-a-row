@@ -2,9 +2,9 @@ package org.example;
 
 public class Duck implements Comparable<Duck> {
 
-    private int width;
-    private int height;
-    private double ratio;
+    private final int width;
+    private final int height;
+    private final double ratio;
 
     public Duck(final int height, final int width) {
         this.width = width;
@@ -16,24 +16,12 @@ public class Duck implements Comparable<Duck> {
         return width;
     }
 
-    void setWidth(final int width) {
-        this.width = width;
-    }
-
     int getHeight() {
         return height;
     }
 
-    void setHeight(final int height) {
-        this.height = height;
-    }
-
     double getRatio() {
         return ratio;
-    }
-
-    void setRatio(final double ratio) {
-        this.ratio = ratio;
     }
 
     @Override
@@ -49,6 +37,4 @@ public class Duck implements Comparable<Duck> {
     public int compareTo(Duck otherDuck) {
         return Double.compare(getRatio(), otherDuck.getRatio());
     }
-
-
 }
